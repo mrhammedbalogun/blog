@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Registration Page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" style="color:white">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Create Blog Post
+            </h1>
+            <br>
+            {{ form.title.label() }}
+            {{ form.title(class="form-control", placeholder="Title")}}
+
+            {{ form.body.label() }}
+            {{ form.body(class="form-control", placeholder="Body")}}
+
+            <br>
+            
+            {{ form.submit(class="form-control, btn-lg btn-block btn-primary")}}
+
+            <br>
+
+            
+
+        </form>
+    </div>
+</body>
+{% endblock %}
