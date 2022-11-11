@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Registration Page
+Update Page
 {% endblock %}
 
 {% block content %}
 <body class="text-center">
-    <div class="container mt-5">
-        <form method="POST" style="color:white">
+    <div class="container">
+        <form action="/post/edit/{{ blog_to_update.id }}" method="POST" style="color:white">
             {{ form.hidden_tag() }}
             <h1 class="h3 mb-3 font-weight-normal">
-                Create Blog Post
+                Update Blog Post
             </h1>
             <br>
-           
-            {{ form.title(class="form-control", placeholder="Title")}}
+            {{ form.title.label() }}
+            {{ form.title(class="form-control") }}
 
-            <br>
-            {{ form.body(class="form-control", placeholder="Body")}}
+            {{ form.slug.label() }}
+            {{ form.slug(class="form-control") }}
+
+            {{ form.body.label() }}
+            {{ form.body(class="form-control") }}
 
             <br>
             

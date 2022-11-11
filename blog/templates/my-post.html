@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+My Post
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>The Blog Post You Wrote</h1>
+        
+        {% for post in mypost %}
+            <div class="card" style="background-color: grey;">
+                <div class="card-header">
+                {{ post.created.date() }}
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body }}</p>
+                <a href="{{ url_for('post_details', slug=post.slug) }}" class="btn btn-primary">Read More</a>
+                {% if current_user.id == post.owner %}
+                    <a href="{{ url_for('update', id=post.id) }}" class="btn btn-warning">Update...</a>
+                    <a href="{{ url_for('delete', id=post.id) }}" class="btn btn-danger">Delete...</a>
+                {% endif %}
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    
+    
+{% endblock %}
+

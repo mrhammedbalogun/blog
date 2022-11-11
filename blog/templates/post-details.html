@@ -5,11 +5,21 @@
 
 {% block content %}
     <div class="container">
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.body }}</p>
-        <p>{{ post.created.date() }}</p>
-    </div>
-    
-    
+        <div class="card mt-5" style="background-color: grey;">
+            <div class="card-header">
+            {{ post.created }}
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+            {% if current_user.id == post.owner %}
+            
+                <a href="{{ url_for('update', id=post.id) }}" class="btn btn-warning">Update...</a>
+                <a href="{{ url_for('delete', id=post.id) }}" class="btn btn-danger">Delete...</a>
+            {% endif %}
+            </div>
+            <div class="card-footer bg-transparent border-success">Writen by: {{ post.author }}</div>
+        </div>
+    </div>    
 {% endblock %}
 

@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from blog.models import User
+from wtforms.widgets import TextArea
 
 
 class RegistrationForm(FlaskForm):
@@ -27,8 +28,14 @@ class RegistrationForm(FlaskForm):
 
 class CreateBlogForm(FlaskForm):
     title = StringField(label='Title', validators=[DataRequired()])
-    body = TextAreaField(label='Body')
+    body = TextAreaField(label='Body', validators=[DataRequired()], widget=TextArea())
     submit = SubmitField(label='Create Blog')
+
+class UpdateBlogForm(FlaskForm):
+    title = StringField(label='Title', validators=[DataRequired()])
+    slug = StringField()
+    body = TextAreaField(label='Body', validators=[DataRequired()], widget=TextArea())
+    submit = SubmitField(label='Update')
 
 class LoginForm(FlaskForm):
     username = StringField(label='User Name:', validators=[DataRequired()])

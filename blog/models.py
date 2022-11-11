@@ -10,6 +10,10 @@ def slugify(s):
     pattern = r'[^\w+]'
     return re.sub(pattern, '-', s)
 
+user_blogpost = db.Table('user_blog', 
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('post_id', db.Integer, db.ForeignKey('post.id'))
+)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -42,6 +46,7 @@ class Post(db.Model):
     title = db.Column(db.String(length=140), nullable=False)
     slug = db.Column(db.String(length=140), nullable=False, unique=True)
     body = db.Column(db.Text)
+    author = db.Column(db.String(length=240))
     created = db.Column(db.DateTime, default=datetime.now())
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 

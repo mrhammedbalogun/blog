@@ -8,7 +8,7 @@ base_dir = os.path.dirname(os.path.realpath(__file__))
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'myblog.sqlite3') 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'myblog2.sqlite3') 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:12345@localhost/altschoolblognew' 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
